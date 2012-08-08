@@ -15,5 +15,9 @@
   "optionalDependencies": {},
   "engines": {
     "node": "*"
+  },
+  "main" : "edgar.js",
+  "bin": {
+    "edgr" : "node bin.js"
   }
 }
