@@ -19,8 +19,11 @@ parser.command('ticker')
         _.each(data.filings, function(f){
           var fil = []
           _.each(_.keys(data.filings[0]), function(v){
-            var val = f[v] + ''
-            fil.push(val.substring(0, 20))
+            var val = (f[v] + '').substring(0, 20)
+            if (f[v].url){
+              val = f[v].text.blue
+            }
+            fil.push(val)
           })
           table.push(fil)
         })

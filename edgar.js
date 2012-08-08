@@ -36,7 +36,15 @@ exports.searchTicker = function(ticker, opts, cb){
         var f = {}
 
         win.$(this).find('td').each(function(k){
-          f[filingsHead[k]] = win.$(this).text()
+          
+          var $val = win.$(this)
+            , val = $val.text()
+          
+          if ($val.children('a').length){
+            val = {text: val, url : $val.children('a')[0].href}
+          }
+
+          f[filingsHead[k]] = val
         })
 
         if (!_.isEmpty(f))
