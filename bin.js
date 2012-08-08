@@ -1,7 +1,8 @@
 var parser = require("nomnom")
   , edgar = require('./edgar')
   , colors = require('colors')
-
+  , _ = require('underscore')
+  , Table = require('cli-table')
 
 parser.command('ticker')
   .callback(function(opts){
@@ -9,7 +10,24 @@ parser.command('ticker')
 
     edgar.searchTicker(tk, {}, function(data){
       console.log(tk, ": ", data.name.yellow);
-      console.log(data)
+      
+      if (data.filings){
+        var table = new Table({
+            head: _.keys(data.filings[0])
+          , style : {compact : true, 'padding-left' : 1}
+        })
+        _.each(data.filings, function(f){
+          var fil = []
+          _.each(_.keys(data.filings[0]), function(v){
+            var val = f[v] + ''
+            fil.push(val.substring(0, 20))
+          })
+          table.push(fil)
+        })
+
+        console.log(table.toString())
+      }
+      //console.log(data)
     })
   })
   .help("Search for a company ticker")

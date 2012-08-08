@@ -24,10 +24,29 @@ exports.searchTicker = function(ticker, opts, cb){
       var $companyInfo = win.$('div.companyInfo')
         , companyName = $companyInfo.find('.companyName').text().replace("(see all company filings)", "")
         , companyAddress = win.$('.mailer').text()
+        , filings = []
+        , $filingsTable = win.$('table.tableFile2')
+        , filingsHead = []
+
+      $filingsTable.find('th').each(function(){
+        filingsHead.push(win.$(this).text())
+      })
+
+      $filingsTable.find("tr").each(function(k){
+        var f = {}
+
+        win.$(this).find('td').each(function(k){
+          f[filingsHead[k]] = win.$(this).text()
+        })
+
+        if (!_.isEmpty(f))
+          filings.push(f);
+      })
 
       cb({
           name: companyName
         , address : companyAddress
+        , filings : filings
       })
     })
 

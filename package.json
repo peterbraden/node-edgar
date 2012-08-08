@@ -9,6 +9,7 @@
     , "jsdom" : "*"
     , "nomnom" : "*"
     , "colors" : "*"
+    , "cli-table": "*"
   },
   "devDependencies": {},
   "optionalDependencies": {},
