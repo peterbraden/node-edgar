@@ -3,7 +3,13 @@
   "name": "edgar",
   "description": "SEC Edgar database API",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+      "request" : "*"
+    , "underscore" : "*"
+    , "jsdom" : "*"
+    , "nomnom" : "*"
+    , "colors" : "*"
+  },
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
