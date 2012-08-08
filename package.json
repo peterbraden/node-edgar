@@ -1,0 +1,12 @@
+{
+  "author": "peterbraden <peterbraden@peterbraden.co.uk> (peterbraden.co.uk)",
+  "name": "edgar",
+  "description": "SEC Edgar database API",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
